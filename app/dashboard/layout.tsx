@@ -5,8 +5,10 @@ const items = [
   { label: 'Overview', href: '/dashboard' },
   { label: 'Products', href: '/dashboard/products' },
   { label: 'Orders', href: '/dashboard/orders' },
+  { label: 'Customers', href: '/dashboard/customers' },
   { label: 'Settings', href: '/dashboard/settings' },
   { label: 'Subscription', href: '/dashboard/subscription' },
+  { label: 'Logout', href: '/login' },
 ];
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
@@ -22,7 +24,20 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           ))}
         </nav>
       </aside>
-      <main className="main">{children}</main>
+
+      <div>
+        <header className="topbar">
+          <div>
+            <p className="muted" style={{ margin: 0 }}>Store</p>
+            <h2 style={{ margin: 0 }}>Nova Style</h2>
+          </div>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            <span className="badge">Basic Plan</span>
+            <button className="btn btn-outline" type="button">Profile ▾</button>
+          </div>
+        </header>
+        <main className="main">{children}</main>
+      </div>
     </div>
   );
 }
