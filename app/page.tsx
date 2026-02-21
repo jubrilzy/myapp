@@ -26,7 +26,7 @@ export default function LandingPage() {
           <h3>Basic</h3>
           <p style={{ fontSize: 28, margin: '8px 0' }}>$19 / month</p>
           <p style={{ color: 'var(--muted)' }}>1 store owner • Product management • Checkout • Paystack + Flutterwave</p>
-          <button className="btn btn-primary" style={{ marginTop: 12 }}>Start 7-day Trial</button>
+          <Link className="btn btn-primary" style={{ marginTop: 12 }} href="/register">Start 7-day Trial</Link>
         </article>
       </section>
     </div>
