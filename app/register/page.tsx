@@ -280,7 +280,10 @@ export default function RegisterPage() {
 
               <div className="form-group">
                 <label className="form-label">Business name</label>
-                <input className={`form-input no-icon ${errors.bizName ? 'has-error' : ''}`} placeholder="e.g. Amaka Fashion House" value={form.bizName} onChange={(e) => updateField('bizName', e.target.value)} />
+                <div className="input-wrap">
+                  <span className="input-icon">🏢</span>
+                  <input className={`form-input ${errors.bizName ? 'has-error' : ''}`} placeholder="e.g. Amaka Fashion House" value={form.bizName} onChange={(e) => updateField('bizName', e.target.value)} />
+                </div>
                 {errors.bizName ? <div className="form-error show">{errors.bizName}</div> : null}
               </div>
 
@@ -308,24 +311,40 @@ export default function RegisterPage() {
               <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">State / Location</label>
-                  <select className="form-select" value={form.bizState} onChange={(e) => updateField('bizState', e.target.value)}>
-                    <option value="">Select your state</option>
-                    <option>Lagos</option>
-                    <option>Abuja (FCT)</option>
-                    <option>Kano</option>
-                    <option>Rivers</option>
-                    <option>Outside Nigeria</option>
-                  </select>
+                  <div className="input-wrap">
+                    <span className="input-icon">📍</span>
+                    <select className="form-select" value={form.bizState} onChange={(e) => updateField('bizState', e.target.value)}>
+                      <option value="">Select your state</option>
+                      <option>Lagos</option><option>Abuja (FCT)</option><option>Kano</option>
+                      <option>Rivers</option><option>Oyo</option><option>Kaduna</option>
+                      <option>Anambra</option><option>Delta</option><option>Edo</option>
+                      <option>Ogun</option><option>Imo</option><option>Enugu</option>
+                      <option>Cross River</option><option>Kwara</option><option>Borno</option>
+                      <option>Akwa Ibom</option><option>Plateau</option><option>Osun</option>
+                      <option>Bauchi</option><option>Ondo</option><option>Ekiti</option>
+                      <option>Sokoto</option><option>Niger</option><option>Kogi</option>
+                      <option>Nassarawa</option><option>Jigawa</option><option>Kebbi</option>
+                      <option>Zamfara</option><option>Taraba</option><option>Adamawa</option>
+                      <option>Gombe</option><option>Yobe</option><option>Bayelsa</option>
+                      <option>Benue</option><option>Ebonyi</option><option>Abia</option>
+                      <option>Outside Nigeria</option>
+                    </select>
+                    <span className="select-arrow">⌄</span>
+                  </div>
                 </div>
                 <div className="form-group">
                   <label className="form-label">How many products do you sell? <span className="optional">(approx.)</span></label>
-                  <select className="form-select" value={form.productCount} onChange={(e) => updateField('productCount', e.target.value)}>
-                    <option value="">Select range</option>
-                    <option>1–10 products</option>
-                    <option>11–50 products</option>
-                    <option>51–200 products</option>
-                    <option>200+ products</option>
-                  </select>
+                  <div className="input-wrap">
+                    <span className="input-icon">📦</span>
+                    <select className="form-select" value={form.productCount} onChange={(e) => updateField('productCount', e.target.value)}>
+                      <option value="">Select range</option>
+                      <option>1–10 products</option>
+                      <option>11–50 products</option>
+                      <option>51–200 products</option>
+                      <option>200+ products</option>
+                    </select>
+                    <span className="select-arrow">⌄</span>
+                  </div>
                 </div>
               </div>
 
@@ -447,15 +466,14 @@ export default function RegisterPage() {
       </footer>
 
       <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
-        .signup-root { --ink:#0a0a0f; --surface:#111118; --card:#16161f; --card2:#1c1c28; --border:rgba(255,255,255,.07); --border-hover:rgba(255,255,255,.14); --border-focus:rgba(200,255,0,.4); --border-selected:rgba(200,255,0,.6); --lime:#c8ff00; --lime-dim:#a8d900; --lime-bg:rgba(200,255,0,.08); --lime-bg-strong:rgba(200,255,0,.14); --lime-border:rgba(200,255,0,.2); --white:#f4f4f0; --muted:#7a7a8a; --muted2:#44445a; --error:#ff5566; --error-bg:rgba(255,85,102,.08); --input-bg:rgba(255,255,255,.04); --input-bg-focus:rgba(255,255,255,.06); --progress-track:rgba(255,255,255,.06); background:var(--ink); color:var(--white); font-family:'DM Sans',sans-serif; min-height:100svh; position:relative; overflow:hidden; }
+        .signup-root { --ink:#0a0a0f; --surface:#111118; --card:#16161f; --card2:#1c1c28; --border:rgba(255,255,255,.07); --border-hover:rgba(255,255,255,.14); --border-focus:rgba(200,255,0,.4); --border-selected:rgba(200,255,0,.6); --lime:#c8ff00; --lime-dim:#a8d900; --lime-bg:rgba(200,255,0,.08); --lime-bg-strong:rgba(200,255,0,.14); --lime-border:rgba(200,255,0,.2); --white:#f4f4f0; --muted:#7a7a8a; --muted2:#44445a; --error:#ff5566; --error-bg:rgba(255,85,102,.08); --input-bg:rgba(255,255,255,.04); --input-bg-focus:rgba(255,255,255,.06); --progress-track:rgba(255,255,255,.06); background:var(--ink); color:var(--white); font-family:var(--font-dm-sans),'DM Sans',sans-serif; min-height:100svh; position:relative; overflow:hidden; }
         :global([data-theme='light']) .signup-root { --ink:#fafaf8; --surface:#f1f1ee; --card:#fff; --card2:#f7f7f4; --border:rgba(0,0,0,.09); --border-hover:rgba(0,0,0,.18); --border-focus:rgba(95,163,0,.5); --border-selected:rgba(95,163,0,.7); --lime:#5fa300; --lime-dim:#4a8500; --lime-bg:rgba(95,163,0,.08); --lime-bg-strong:rgba(95,163,0,.14); --lime-border:rgba(95,163,0,.22); --white:#111118; --muted:#666678; --muted2:#9999aa; --input-bg:rgba(0,0,0,.03); --input-bg-focus:rgba(0,0,0,.05); --progress-track:rgba(0,0,0,.06); }
         .blob { position:fixed; border-radius:50%; filter:blur(100px); pointer-events:none; z-index:0; }
         .blob-1 { width:500px; height:500px; background:rgba(200,255,0,.07); top:-150px; right:-100px; }
         .blob-2 { width:350px; height:350px; background:rgba(80,60,255,.05); bottom:0; left:-100px; }
         nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:0 clamp(20px,5vw,60px); height:68px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border); backdrop-filter:blur(20px) saturate(180%); background:rgba(10,10,15,.8); }
         :global([data-theme='light']) nav { background:rgba(250,250,248,.85); }
-        .nav-logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;letter-spacing:-.5px;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:8px}
+        .nav-logo{font-family:var(--font-syne),'Syne',sans-serif;font-size:20px;font-weight:800;letter-spacing:-.5px;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:8px}
         .nav-logo span{color:var(--lime)} .nav-logo-icon{width:30px;height:30px;background:var(--lime);border-radius:8px;display:grid;place-items:center}
         .theme-toggle{width:36px;height:36px;border-radius:10px;background:var(--card);border:1px solid var(--border);cursor:pointer}
         .nav-link{font-size:13px;color:var(--muted);text-decoration:none} .nav-link span{color:var(--lime);font-weight:700}
@@ -480,12 +498,12 @@ export default function RegisterPage() {
         .step-panel{display:none}.step-panel.active{display:block;animation:slideIn .35s ease both}.step-panel.back.active{animation:slideBack .35s ease both}
         @keyframes slideIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}} @keyframes slideBack{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
         .step-header{margin-bottom:28px}.step-badge{display:inline-flex;background:var(--lime-bg);border:1px solid var(--lime-border);border-radius:99px;padding:4px 12px;font-size:11px;font-weight:700;color:var(--lime);margin-bottom:12px}
-        .step-header h2{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:6px}.step-header p{font-size:14px;color:var(--muted)}
+        .step-header h2{font-family:var(--font-syne),'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:6px}.step-header p{font-size:14px;color:var(--muted)}
         .auth-divider{display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:12px;color:var(--muted2);text-transform:uppercase}.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border)}
         .oauth-btn{width:100%;padding:12px;background:var(--input-bg);border:1.5px solid var(--border);border-radius:12px;display:flex;justify-content:center;color:var(--white);text-decoration:none}
         .form-group{margin-bottom:16px}.form-label{display:block;font-size:13px;font-weight:600;margin-bottom:7px}.optional{color:var(--muted);font-size:12px}
-        .form-input,.form-select{width:100%;padding:12px 16px;background:var(--input-bg);border:1.5px solid var(--border);border-radius:12px;font-size:14px;color:var(--white);outline:none}
-        .form-input.has-error{border-color:var(--error);box-shadow:0 0 0 3px var(--error-bg)} .form-input.no-icon{padding-left:16px}.form-hint{font-size:12px;color:var(--muted);margin-top:5px}
+        .input-wrap{position:relative}.input-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px;pointer-events:none}.select-arrow{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:14px}.form-input,.form-select{width:100%;padding:12px 16px 12px 44px;background:var(--input-bg);border:1.5px solid var(--border);border-radius:12px;font-size:14px;color:var(--white);outline:none}
+        .form-input.has-error{border-color:var(--error);box-shadow:0 0 0 3px var(--error-bg)} .form-input.no-icon{padding-left:16px}.form-select{padding-right:36px}.form-hint{font-size:12px;color:var(--muted);margin-top:5px}
         .form-error{display:none;font-size:12px;color:var(--error);margin-top:5px}.form-error.show{display:flex}
         .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.pwd-strength{margin-top:8px}.pwd-strength-bars{display:flex;gap:4px;margin-bottom:4px}
         .pwd-bar{height:3px;flex:1;border-radius:99px;background:var(--border)} .pwd-bar.weak{background:#ff5566}.pwd-bar.fair{background:#ffaa00}.pwd-bar.good{background:#00cc66}.pwd-bar.strong{background:var(--lime)}
@@ -496,12 +514,12 @@ export default function RegisterPage() {
         .slug-preview{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:10px 16px;font-family:'Courier New',monospace;font-size:13px;color:var(--muted);margin-top:8px}
         .slug-val{color:var(--lime);font-weight:700} .terms-box{background:var(--input-bg);border:1.5px solid var(--border);border-radius:12px;padding:16px;margin-bottom:20px;font-size:13px;color:var(--muted);display:flex;gap:12px}
         .terms-box a{color:var(--lime);text-decoration:none;font-weight:600} .step-actions{display:flex;align-items:center;gap:10px;margin-top:24px}
-        .btn-next{flex:1;padding:14px 24px;background:var(--lime);color:#0a0a0f;border:none;border-radius:12px;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;cursor:pointer}
+        .btn-next{flex:1;padding:14px 24px;background:var(--lime);color:#0a0a0f;border:none;border-radius:12px;font-family:var(--font-syne),'Syne',sans-serif;font-size:15px;font-weight:700;cursor:pointer}
         .btn-back{padding:14px 18px;background:var(--input-bg);color:var(--muted);border:1.5px solid var(--border);border-radius:12px;cursor:pointer}
         .success-panel{text-align:center;padding:20px 0}.success-icon{width:80px;height:80px;border-radius:50%;background:var(--lime-bg);border:2px solid var(--lime-border);display:grid;place-items:center;font-size:36px;margin:0 auto 24px}
-        .success-panel h2{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;margin-bottom:8px}.success-panel p{color:var(--muted);font-size:14px;max-width:340px;margin:0 auto 28px}
+        .success-panel h2{font-family:var(--font-syne),'Syne',sans-serif;font-size:24px;font-weight:800;margin-bottom:8px}.success-panel p{color:var(--muted);font-size:14px;max-width:340px;margin:0 auto 28px}
         .success-checklist{text-align:left;background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:24px;display:flex;flex-direction:column;gap:12px}
-        .success-check{display:flex;gap:10px;font-size:13px;color:var(--muted)} .btn-go{display:inline-flex;padding:14px 32px;background:var(--lime);color:#0a0a0f;border-radius:12px;font-family:'Syne',sans-serif;font-weight:700;text-decoration:none}
+        .success-check{display:flex;gap:10px;font-size:13px;color:var(--muted)} .btn-go{display:inline-flex;padding:14px 32px;background:var(--lime);color:#0a0a0f;border-radius:12px;font-family:var(--font-syne),'Syne',sans-serif;font-weight:700;text-decoration:none}
         .auth-footer-note{text-align:center;margin-top:20px;font-size:13px;color:var(--muted)} .auth-footer-note.hidden{display:none}
         footer{text-align:center;padding:20px;font-size:12px;color:var(--muted2);border-top:1px solid var(--border);position:relative;z-index:1} footer a{color:var(--muted);text-decoration:none}
         @media(max-width:640px){.nav-link{display:none}.hamburger{display:flex}}
