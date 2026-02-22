@@ -266,8 +266,7 @@ footer { padding:48px clamp(20px,5vw,80px) 32px; border-top:1px solid var(--bord
 .mobile-cta { margin-top:24px; display:flex; flex-direction:column; gap:12px; }
 .mobile-cta .btn { width: 100%; justify-content:center; }
 .mobile-cta .btn-primary { color:#0a0a0f !important; }
-.mobile-theme-toggle { width:100%; justify-content:center; gap:8px; font-weight:600; margin-bottom:12px; }
-.mobile-theme-toggle span { font-size:14px; }
+.mobile-theme-toggle { width:38px; height:38px; margin-bottom:16px; }
 
 @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
 .reveal { opacity:0; transform:translateY(30px); transition:opacity .65s ease, transform .65s ease; }
