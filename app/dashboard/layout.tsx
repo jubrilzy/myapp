@@ -15,7 +15,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
     <div className="dashboard">
       <aside className="sidebar">
-        <h3 style={{ marginTop: 0 }}>Merchant Panel</h3>
+        <h3 style={{ marginTop: 0 }}>Store Admin</h3>
         <nav>
           {items.map((item) => (
             <Link key={item.label} href={item.href} className="side-link">
@@ -28,7 +28,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       <div>
         <header className="topbar">
           <div>
-            <p className="muted" style={{ margin: 0 }}>Store</p>
+            <p className="muted" style={{ margin: 0 }}>Store Admin</p>
             <h2 style={{ margin: 0 }}>Nova Style</h2>
           </div>
           <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
