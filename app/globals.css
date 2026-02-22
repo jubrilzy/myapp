@@ -205,6 +205,13 @@ section { position:relative; overflow:hidden; }
 .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; align-items:start; }
 .pricing-card { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:36px; }
 .pricing-card.popular { background:var(--lime); border-color:var(--lime); transform:scale(1.04); z-index:1; }
+.pricing-card.popular .plan-name,
+.pricing-card.popular .plan-price .amount { color:#0a0a0f; }
+.pricing-card.popular .plan-desc,
+.pricing-card.popular .plan-price .cycle,
+.pricing-card.popular .plan-monthly,
+.pricing-card.popular .feature-list li { color:rgba(0,0,0,0.68); }
+.pricing-card.popular .plan-divider { background:rgba(0,0,0,0.14); }
 .btn-popular { display:block; width:100%; text-align:center; padding:14px 24px; border-radius:100px; background:#0a0a0f; color:#c8ff00 !important; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:700; border:none; cursor:pointer; text-decoration:none; }
 .popular-tag { display:inline-block; background:var(--ink); color:var(--lime) !important; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:4px 12px; border-radius:100px; margin-bottom:24px; }
 .plan-icon { font-size:28px; margin-bottom:16px; display:block; }
