@@ -1,57 +1,90 @@
+'use client';
+
+import { useMemo, useState } from 'react';
+
 const stats = [
-  { label: 'Total Orders', value: '128' },
-  { label: 'Total Revenue', value: '$14,280.00' },
-  { label: 'Active Products', value: '36' },
-  { label: 'Subscription Status', value: 'Active' },
-  { label: 'Store Status', value: 'Active' },
+  { label: 'Total Orders', value: '7', sub: '+2 this week' },
+  { label: 'Total Revenue', value: '₦84.5k', sub: 'This month' },
+  { label: 'Out for Delivery', value: '2', sub: 'You are delivering today' },
+  { label: 'Pending Payment', value: '1', sub: 'Awaiting confirmation' },
 ];
 
-const recentOrders = [
-  { id: '#ORD-3021', customer: 'Ada James', amount: '$120.00', status: 'Paid' },
-  { id: '#ORD-3020', customer: 'Ibrahim Musa', amount: '$65.00', status: 'Paid' },
-  { id: '#ORD-3019', customer: 'Grace N.', amount: '$45.00', status: 'Pending' },
-  { id: '#ORD-3018', customer: 'Tunde A.', amount: '$310.00', status: 'Paid' },
-  { id: '#ORD-3017', customer: 'Rita Cole', amount: '$90.00', status: 'Failed' },
+const templates = [
+  { id: 'default', name: 'Bizshop Default', desc: 'Balanced layout for fashion, beauty, and general stores.' },
+  { id: 'minimal', name: 'Minimal Grid', desc: 'Clean, product-first store layout with lightweight sections.' },
+  { id: 'editorial', name: 'Editorial', desc: 'Story-led homepage with large banners and campaign sections.' },
 ];
 
 export default function DashboardPage() {
+  const [selectedTemplate, setSelectedTemplate] = useState('default');
+
+  const activeTemplate = useMemo(
+    () => templates.find((template) => template.id === selectedTemplate) ?? templates[0],
+    [selectedTemplate],
+  );
+
   return (
     <section>
-      <h1 style={{ marginTop: 0 }}>Dashboard Overview</h1>
-      <p className="muted">Operational summary for your store at a glance.</p>
+      <h1 style={{ marginTop: 0 }}>Good afternoon, Amaka 👋</h1>
+      <p className="muted">Here is your store performance for Mini Fashion today.</p>
 
       <div className="grid stat-grid" style={{ marginTop: 20 }}>
         {stats.map((item) => (
           <article key={item.label} className="card panel-pad">
             <p className="muted" style={{ margin: 0 }}>{item.label}</p>
             <h3 style={{ marginBottom: 0 }}>{item.value}</h3>
+            <p className="muted" style={{ marginTop: 8 }}>{item.sub}</p>
           </article>
         ))}
       </div>
 
       <section className="card panel-pad" style={{ marginTop: 20 }}>
-        <h3 style={{ marginTop: 0 }}>Recent Orders</h3>
-        <div className="table-wrap">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Order</th>
-                <th>Customer</th>
-                <th>Amount</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {recentOrders.map((order) => (
-                <tr key={order.id}>
-                  <td>{order.id}</td>
-                  <td>{order.customer}</td>
-                  <td>{order.amount}</td>
-                  <td>{order.status}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
+          <div>
+            <h3 style={{ marginTop: 0 }}>Store Template</h3>
+            <p className="muted" style={{ marginTop: 6 }}>
+              Select the layout used for your storefront. Bizshop Default is the default template.
+            </p>
+          </div>
+          <span className="badge">Default: Bizshop Default</span>
+        </div>
+
+        <div className="grid" style={{ marginTop: 16, gap: 12 }}>
+          {templates.map((template) => {
+            const active = template.id === selectedTemplate;
+            return (
+              <button
+                key={template.id}
+                type="button"
+                onClick={() => setSelectedTemplate(template.id)}
+                style={{
+                  textAlign: 'left',
+                  border: active ? '1px solid var(--lime)' : '1px solid var(--border)',
+                  background: active ? 'var(--lime-bg)' : 'var(--card)',
+                  borderRadius: 12,
+                  padding: 14,
+                  cursor: 'pointer',
+                  color: 'var(--white)',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
+                  <strong>{template.name}</strong>
+                  {template.id === 'default' ? <span className="badge">Default</span> : null}
+                </div>
+                <p className="muted" style={{ marginTop: 6 }}>{template.desc}</p>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="card" style={{ marginTop: 16 }}>
+          <p className="muted" style={{ margin: 0 }}>Active template</p>
+          <h4 style={{ marginTop: 8 }}>{activeTemplate.name}</h4>
+          <p className="muted" style={{ marginTop: 6 }}>{activeTemplate.desc}</p>
+          <div style={{ marginTop: 12, display: 'flex', gap: 8 }}>
+            <button className="btn btn-primary" type="button">Save Template</button>
+            <button className="btn btn-outline" type="button">Preview Store</button>
+          </div>
         </div>
       </section>
     </section>
