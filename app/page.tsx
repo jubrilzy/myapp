@@ -214,12 +214,60 @@ export default function LandingPage() {
           <div className="pricing-header reveal">
             <div className="section-label">Pricing</div>
             <h2 className="section-title">Clear, honest pricing.</h2>
-            <p className="section-desc">Billed in Naira. No hidden fees. Upgrade or cancel whenever you want.</p>
+            <p className="section-desc">Billed in Naira. No hidden fees. No surprise dollar conversions. Upgrade or cancel whenever you want.</p>
           </div>
           <div className="pricing-grid">
-            <div className="pricing-card reveal"><span className="plan-icon">🏁</span><div className="plan-name">Starter</div><div className="plan-desc">Perfect for new businesses launching their first online store.</div><div className="plan-price"><span className="amount">₦10k</span><span className="cycle">/ quarter</span></div><div className="plan-monthly">That&apos;s ₦3,333 per month</div><a href="/register" className="btn btn-ghost" style={{ width: '100%', justifyContent: 'center', padding: 13 }}>Get Started</a></div>
-            <div className="pricing-card popular reveal reveal-delay-1"><span className="popular-tag">Most Popular</span><span className="plan-icon">📈</span><div className="plan-name">Pro</div><div className="plan-desc">For growing businesses that need more power and customer tools.</div><div className="plan-price"><span className="amount">₦25k</span><span className="cycle">/ quarter</span></div><div className="plan-monthly">That&apos;s ₦8,333 per month</div><a href="/register" className="btn-popular">Get Started</a></div>
-            <div className="pricing-card reveal reveal-delay-2"><span className="plan-icon">🚀</span><div className="plan-name">Business</div><div className="plan-desc">For serious brands and scaling teams that demand the best.</div><div className="plan-price"><span className="amount">₦50k</span><span className="cycle">/ quarter</span></div><div className="plan-monthly">That&apos;s ₦16,667 per month</div><a href="/register" className="btn btn-ghost" style={{ width: '100%', justifyContent: 'center', padding: 13 }}>Get Started</a></div>
+            <div className="pricing-card reveal">
+              <span className="plan-icon">🏁</span>
+              <div className="plan-name">Starter</div>
+              <div className="plan-desc">Perfect for new businesses launching their first online store.</div>
+              <div className="plan-price"><span className="amount">₦10k</span><span className="cycle">/ quarter</span></div>
+              <div className="plan-monthly">That&apos;s ₦3,333 per month</div>
+              <a href="/register" className="btn btn-ghost" style={{ width: '100%', justifyContent: 'center', padding: 13 }}>Get Started</a>
+              <div className="plan-divider" />
+              <ul className="feature-list">
+                <li>Store dashboard</li>
+                <li>Unlimited products</li>
+                <li>Order management</li>
+                <li>Paystack & Flutterwave</li>
+                <li>Basic sales reporting</li>
+              </ul>
+            </div>
+
+            <div className="pricing-card popular reveal reveal-delay-1">
+              <span className="popular-tag">Most Popular</span>
+              <span className="plan-icon">📈</span>
+              <div className="plan-name">Pro</div>
+              <div className="plan-desc">For growing businesses that need more power and customer tools.</div>
+              <div className="plan-price"><span className="amount">₦25k</span><span className="cycle">/ quarter</span></div>
+              <div className="plan-monthly">That&apos;s ₦8,333 per month</div>
+              <a href="/register" className="btn-popular">Get Started</a>
+              <div className="plan-divider" />
+              <ul className="feature-list">
+                <li>Everything in Starter</li>
+                <li>Customer management</li>
+                <li>Inventory insights</li>
+                <li>Low stock alerts</li>
+                <li>Discount codes</li>
+              </ul>
+            </div>
+
+            <div className="pricing-card reveal reveal-delay-2">
+              <span className="plan-icon">🚀</span>
+              <div className="plan-name">Business</div>
+              <div className="plan-desc">For serious brands and scaling teams that demand the best.</div>
+              <div className="plan-price"><span className="amount">₦50k</span><span className="cycle">/ quarter</span></div>
+              <div className="plan-monthly">That&apos;s ₦16,667 per month</div>
+              <a href="/register" className="btn btn-ghost" style={{ width: '100%', justifyContent: 'center', padding: 13 }}>Get Started</a>
+              <div className="plan-divider" />
+              <ul className="feature-list">
+                <li>Everything in Pro</li>
+                <li>Advanced analytics</li>
+                <li>Featured product sections</li>
+                <li>Sales export reports</li>
+                <li>Priority support</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -228,11 +276,12 @@ export default function LandingPage() {
         <div className="testimonials-inner">
           <div className="testimonials-header">
             <div className="reveal"><div className="section-label">Testimonials</div><h2 className="section-title">Nigerian business owners<br />are already winning.</h2></div>
+            <div className="reveal"><div className="rating-pill">⭐️ <strong>5.0</strong> average rating</div></div>
           </div>
           <div className="testimonials-grid">
-            <div className="testi-card reveal"><div className="stars">★★★★★</div><blockquote>&quot;Bizshop helped me launch my fashion store in less than a week.&quot;</blockquote></div>
-            <div className="testi-card reveal reveal-delay-1"><div className="stars">★★★★★</div><blockquote>&quot;Simple, clean, and does exactly what I need.&quot;</blockquote></div>
-            <div className="testi-card reveal reveal-delay-2"><div className="stars">★★★★★</div><blockquote>&quot;The analytics alone are worth every kobo.&quot;</blockquote></div>
+            <div className="testi-card reveal"><div className="stars">★★★★★</div><blockquote>&quot;Bizshop helped me launch my fashion store in less than a week. Naira payments are seamless and I never have to chase anyone for money anymore.&quot;</blockquote><div className="testi-author"><div className="testi-avatar">A</div><div className="testi-info"><strong>Amaka O.</strong><span>Fashion Store Owner · Lagos</span></div></div></div>
+            <div className="testi-card reveal reveal-delay-1"><div className="stars">★★★★★</div><blockquote>&quot;Simple, clean, and does exactly what I need. I set up my skincare brand in one afternoon and made my first sale the same evening. I was genuinely shocked.&quot;</blockquote><div className="testi-author"><div className="testi-avatar">K</div><div className="testi-info"><strong>Kemi B.</strong><span>Skincare Entrepreneur · Abuja</span></div></div></div>
+            <div className="testi-card reveal reveal-delay-2"><div className="stars">★★★★★</div><blockquote>&quot;The analytics alone are worth every kobo. I finally see my profit, best-selling products, and what's actually growing. I finally understand my business.&quot;</blockquote><div className="testi-author"><div className="testi-avatar">C</div><div className="testi-info"><strong>Chidi N.</strong><span>Electronics Reseller · Port Harcourt</span></div></div></div>
           </div>
         </div>
       </section>

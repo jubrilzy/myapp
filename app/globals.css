@@ -215,6 +215,16 @@ section { position:relative; overflow:hidden; }
 .plan-price .cycle { font-size:13px; color:var(--muted); }
 .plan-monthly { font-size:13px; color:var(--muted); margin-bottom:24px; }
 
+.plan-divider { height:1px; background:var(--border); margin:24px 0; }
+.feature-list { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:0; }
+.feature-list li { font-size:14px; color:var(--muted); line-height:1.5; }
+.rating-pill { background:var(--card); border:1px solid var(--border); border-radius:100px; padding:8px 20px; font-size:13px; color:var(--muted); display:inline-block; }
+.rating-pill strong { color:var(--white); }
+.testi-author { display:flex; align-items:center; gap:12px; }
+.testi-avatar { width:38px; height:38px; border-radius:50%; background:var(--lime-bg); display:grid; place-items:center; font-size:16px; font-weight:700; border:1px solid var(--lime-border); color:var(--lime); font-family:'Syne',sans-serif; }
+.testi-info strong { display:block; font-size:14px; font-weight:600; color:var(--white); }
+.testi-info span { font-size:12px; color:var(--muted); }
+
 .testimonials { padding:100px clamp(20px,5vw,80px); background:var(--surface); }
 .testimonials-inner { max-width:1100px; margin:0 auto; }
 .testimonials-header { margin-bottom:64px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
