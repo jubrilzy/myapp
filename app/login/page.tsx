@@ -417,7 +417,7 @@ export default function LoginPage() {
       title="Bizshop Login"
       srcDoc={loginHtml}
       style={{ width: '100%', height: '100vh', border: 'none', display: 'block' }}
-      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation-by-user-activation"
     />
   );
 }
