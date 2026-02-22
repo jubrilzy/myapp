@@ -1,57 +1,20 @@
+'use client';
+import { EmptyState, SkeletonList } from '@/components/dashboard/ui';
+import { orders } from '@/lib/mock-data';
 import Link from 'next/link';
-import { EmptyState } from '@/components/ui/states';
+import { useMemo, useState } from 'react';
 
-const orders = [
-  { id: 'ORD-3021', customer: 'Ada James', email: 'ada@mail.com', amount: '$120.00', payment: 'Paid', fulfillment: 'Unfulfilled', date: '2026-02-20' },
-  { id: 'ORD-3020', customer: 'Ibrahim Musa', email: 'ibrahim@mail.com', amount: '$65.00', payment: 'Paid', fulfillment: 'Fulfilled', date: '2026-02-19' },
-  { id: 'ORD-3019', customer: 'Grace N.', email: 'grace@mail.com', amount: '$45.00', payment: 'Pending', fulfillment: 'Unfulfilled', date: '2026-02-19' },
-];
-
-export default function DashboardOrdersPage() {
-  return (
-    <section>
-      <h1 style={{ marginTop: 0 }}>Orders</h1>
-      <p className="muted">Monitor payment and fulfillment status.</p>
-
-      <div className="row-between" style={{ marginTop: 12 }}>
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}><select className="btn btn-outline"><option>Payment: All</option><option>Paid</option><option>Pending</option></select><select className="btn btn-outline"><option>Fulfillment: All</option><option>Processing</option><option>Delivered</option></select><input className="filter-input" placeholder="Date range" /></div>
-      </div>
-      {orders.length === 0 ? (
-        <EmptyState title="No orders yet" description="Data will appear here once activity starts." />
-      ) : (
-      <section className="card panel-pad">
-        <div className="table-wrap">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Order ID</th>
-                <th>Customer</th>
-                <th>Email</th>
-                <th>Amount</th>
-                <th>Payment</th>
-                <th>Fulfillment</th>
-                <th>Date</th>
-                <th>View</th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map((order) => (
-                <tr key={order.id}>
-                  <td>{order.id}</td>
-                  <td>{order.customer}</td>
-                  <td>{order.email}</td>
-                  <td>{order.amount}</td>
-                  <td>{order.payment}</td>
-                  <td>{order.fulfillment}</td>
-                  <td>{order.date}</td>
-                  <td><Link href={`/dashboard/orders/${order.id}`}>View</Link></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-      )}
-    </section>
-  );
+export default function OrdersPage() {
+  const [q, setQ] = useState(''); const [filter, setFilter] = useState('All'); const [loading, setLoading] = useState(false);
+  const data = useMemo(() => orders.filter(o => (filter === 'All' || o.status === filter) && `${o.id}${o.customer}`.toLowerCase().includes(q.toLowerCase())), [q, filter]);
+  return <div><h1 className="page-title">Orders</h1><p className="page-sub">Manage all customer orders</p>
+    <div style={{ display: 'flex', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
+      {['All', 'Shipped', 'Delivered', 'Processing'].map(f => <button key={f} className={`btn ${filter === f ? 'btn-primary' : 'btn-ghost'}`} onClick={() => { setLoading(true); setFilter(f); setTimeout(() => setLoading(false), 250); }}>{f}</button>)}
+      <input className="fi" placeholder="Search" value={q} onChange={e => setQ(e.target.value)} style={{ maxWidth: 220 }} />
+    </div>
+    {loading ? <SkeletonList /> : data.length === 0 ? <EmptyState title="No orders found" /> : <>
+      <div className="tbl-wrap desktop-only"><table><thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Payment</th><th>Status</th><th /></tr></thead><tbody>{data.map(o => <tr key={o.id}><td>{o.id}</td><td>{o.customer}</td><td>₦{o.total.toLocaleString()}</td><td>{o.payment}</td><td><span className="badge shipped">{o.status}</span></td><td><Link href={`/dashboard/orders/${o.id}`} className="btn btn-ghost">View</Link></td></tr>)}</tbody></table></div>
+      <div className="mobile-cards">{data.map(o => <div className="mobile-card" key={o.id}><strong>{o.id}</strong><div>{o.customer}</div><div>₦{o.total.toLocaleString()}</div><Link href={`/dashboard/orders/${o.id}`} className="btn btn-ghost">Open</Link></div>)}</div>
+    </>}
+  </div>;
 }

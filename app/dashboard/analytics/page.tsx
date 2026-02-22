@@ -1,5 +1,6 @@
-import { ErrorPlaceholder, LoadingSkeleton } from '@/components/ui/states';
+import { kpis } from '@/lib/mock-data';
+import { StatCard } from '@/components/dashboard/ui';
 
 export default function AnalyticsPage() {
-  return <section><h1 style={{ marginTop: 0 }}>Analytics</h1><div className="grid" style={{ gridTemplateColumns: '2fr 1fr', gap: 12 }}><article className="card panel-pad"><h3>Revenue Chart</h3><div className="chart-placeholder" /></article><article className="card panel-pad"><h3>Conversion Rate</h3><p>3.2%</p></article></div><article className="card panel-pad" style={{ marginTop: 12 }}><h3>Top Selling Products</h3><ul><li>Ankara Maxi Dress</li><li>Classic White Sneakers</li></ul></article><div style={{ marginTop: 12 }}><LoadingSkeleton rows={3} /></div><div style={{ marginTop: 12 }}><ErrorPlaceholder message="Chart service unavailable in Stage 1 mock mode." /></div></section>;
+  return <div><h1 className="page-title">Sales Analytics</h1><div className="grid stats"><StatCard icon="💰" value={`₦${(kpis.totalRevenue/1000).toFixed(0)}k`} label="Revenue"/><StatCard icon="📦" value={`${kpis.orders}`} label="Orders"/><StatCard icon="📊" value={`₦${(kpis.avgOrder/1000).toFixed(1)}k`} label="Avg order"/><StatCard icon="👥" value={`${kpis.repeatCustomers}`} label="Repeat customers"/></div><div className="two-col"><div className="card">Monthly Revenue bars (UI)</div><div className="card">Spend by Category breakdown</div></div><div className="card" style={{ marginTop: 12 }}>Order history table</div></div>;
 }
