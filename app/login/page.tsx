@@ -399,7 +399,7 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
   if (!validate()) return;
   const btn = document.getElementById('loginBtn');
   btn.classList.add('loading');
-  setTimeout(() => { btn.classList.remove('loading'); }, 2500);
+  setTimeout(() => { btn.classList.remove('loading'); window.top.location.href = '/dashboard'; }, 900);
 });
 
 ['email','password'].forEach(id => {

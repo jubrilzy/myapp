@@ -788,7 +788,7 @@ footer a:hover { color: var(--white); }
             <div class="success-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Payment methods connected</span></div>
             <div class="success-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>14-day free trial started</span></div>
           </div>
-          <a href="#" class="btn-go">
+          <a href="/dashboard" target="_top" class="btn-go">
             Go to My Dashboard
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
