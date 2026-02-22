@@ -317,7 +317,7 @@ export default function LandingPage() {
           <div className="footer-links"><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#">Support</a></div>
           <div style={{ fontSize: 13, color: 'var(--muted)' }}>🇳🇬 Made for Nigeria</div>
         </div>
-        <div className="footer-copy">© 2025 Bizshop. All rights reserved. Powering Nigerian ecommerce, one store at a time.</div>
+        <div className="footer-copy">© 2026 Bizshop. All rights reserved. Powering Nigerian ecommerce, one store at a time.</div>
       </footer>
     </>
   );

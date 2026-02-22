@@ -244,12 +244,12 @@ footer a:hover { color: var(--white); }
 <div class="blob blob-2"></div>
 
 <nav>
-  <a href="/" class="nav-logo">
+  <a href="/" target="_top" class="nav-logo">
     <div class="nav-logo-icon">🛍️</div>
     Biz<span>shop</span>
   </a>
   <div class="nav-right-group">
-    <a href="/register" class="nav-link">Don't have an account? <span>Sign up free →</span></a>
+    <a href="/register" target="_top" class="nav-link">Don't have an account? <span>Sign up free →</span></a>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️</button>
     <button class="hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -258,10 +258,10 @@ footer a:hover { color: var(--white); }
 </nav>
 
 <div class="mobile-drawer" id="mobileDrawer">
-  <a href="/" class="mobile-drawer-link">Back to Home</a>
+  <a href="/" target="_top" class="mobile-drawer-link">Back to Home</a>
   <div class="drawer-cta">
-    <a href="/register" class="drawer-btn drawer-btn-outline">Create Free Account</a>
-    <a href="/login" class="drawer-btn drawer-btn-lime">Log in</a>
+    <a href="/register" target="_top" class="drawer-btn drawer-btn-outline">Create Free Account</a>
+    <a href="/login" target="_top" class="drawer-btn drawer-btn-lime">Log in</a>
   </div>
 </div>
 
@@ -307,7 +307,7 @@ footer a:hover { color: var(--white); }
         </div>
 
         <div class="form-meta">
-          <a href="/forgot-password" class="link-subtle">Forgot password?</a>
+          <a href="/forgot-password" target="_top" class="link-subtle">Forgot password?</a>
         </div>
 
         <button type="submit" class="btn-submit" id="loginBtn">
@@ -323,7 +323,7 @@ footer a:hover { color: var(--white); }
       </a>
 
       <div class="auth-footer">
-        New to Bizshop? <a href="/register">Create a free account →</a>
+        New to Bizshop? <a href="/register" target="_top">Create a free account →</a>
       </div>
 
     </div>
@@ -331,7 +331,7 @@ footer a:hover { color: var(--white); }
 </main>
 
 <footer>
-  <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Use</a> &nbsp;·&nbsp; © 2025 Bizshop
+  <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Use</a> &nbsp;·&nbsp; © 2026 Bizshop
 </footer>
 
 <script>

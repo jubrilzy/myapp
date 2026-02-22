@@ -33,7 +33,7 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:100px
 </head>
 <body>
 <nav>
-  <a href="/" class="nav-logo"><div class="nav-logo-icon">🛍️</div>Biz<span>shop</span></a>
+  <a href="/" target="_top" class="nav-logo"><div class="nav-logo-icon">🛍️</div>Biz<span>shop</span></a>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️</button>
 </nav>
 <main>
@@ -53,7 +53,7 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:100px
         <div class="form-error" id="emailError">Please enter a valid email address</div>
         <button type="submit" class="btn-submit">Send reset link</button>
       </form>
-      <div class="auth-footer">Remember password? <a href="/login">Back to login →</a></div>
+      <div class="auth-footer">Remember password? <a href="/login" target="_top">Back to login →</a></div>
     </div>
   </div>
 </main>

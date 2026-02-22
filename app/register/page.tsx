@@ -447,12 +447,12 @@ footer a:hover { color: var(--white); }
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo">
+  <a href="/" target="_top" class="nav-logo">
     <div class="nav-logo-icon">🛍️</div>
     Biz<span>shop</span>
   </a>
   <div class="nav-right-group">
-    <a href="/login" class="nav-link" id="navLoginLink">Already have an account? <span>Log in →</span></a>
+    <a href="/login" target="_top" class="nav-link" id="navLoginLink">Already have an account? <span>Log in →</span></a>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️</button>
     <button class="hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -462,10 +462,10 @@ footer a:hover { color: var(--white); }
 
 <!-- MOBILE DRAWER -->
 <div class="mobile-drawer" id="mobileDrawer">
-  <a href="/" class="mobile-drawer-link">Back to Home</a>
+  <a href="/" target="_top" class="mobile-drawer-link">Back to Home</a>
   <div class="drawer-cta">
-    <a href="/login" class="drawer-btn drawer-btn-outline">Log in to Bizshop</a>
-    <a href="/register" class="drawer-btn drawer-btn-lime">Create Free Account</a>
+    <a href="/login" target="_top" class="drawer-btn drawer-btn-outline">Log in to Bizshop</a>
+    <a href="/register" target="_top" class="drawer-btn drawer-btn-lime">Create Free Account</a>
   </div>
 </div>
 
@@ -579,7 +579,7 @@ footer a:hover { color: var(--white); }
         </div>
 
         <div style="text-align:center;margin-top:16px;font-size:13px;color:var(--muted)">
-          Already have an account? <a href="/login" style="color:var(--lime);font-weight:600">Log in →</a>
+          Already have an account? <a href="/login" target="_top" style="color:var(--lime);font-weight:600">Log in →</a>
         </div>
       </div>
 
@@ -799,14 +799,14 @@ footer a:hover { color: var(--white); }
     </div><!-- /signup-card -->
 
     <div class="auth-footer-note" id="footerNote">
-      Already have an account? <a href="/login" style="color:var(--lime);font-weight:600;text-decoration:none">Log in →</a>
+      Already have an account? <a href="/login" target="_top" style="color:var(--lime);font-weight:600;text-decoration:none">Log in →</a>
     </div>
 
   </div>
 </main>
 
 <footer>
-  <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Use</a> &nbsp;·&nbsp; <a href="#">Merchant Terms</a> &nbsp;·&nbsp; © 2025 Bizshop
+  <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Use</a> &nbsp;·&nbsp; <a href="#">Merchant Terms</a> &nbsp;·&nbsp; © 2026 Bizshop
 </footer>
 
 <script>
