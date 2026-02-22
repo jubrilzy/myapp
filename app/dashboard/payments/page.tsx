@@ -1,0 +1,6 @@
+import { ngn } from '@/components/ui/format';
+import { transactions } from '@/lib/mock-data';
+
+export default function PaymentsPage() {
+  return <section><h1 style={{ marginTop: 0 }}>Payments</h1><article className="card panel-pad form-grid"><label className="field">Paystack Enabled<select defaultValue="Yes"><option>Yes</option><option>No</option></select></label><label className="field">Flutterwave Enabled<select defaultValue="Yes"><option>Yes</option><option>No</option></select></label><label className="field">Paystack Public Key<input placeholder="pk_test_xxx" /></label><label className="field">Flutterwave Public Key<input placeholder="FLWPUBK_TEST-xxx" /></label><label className="field">Test Mode<select defaultValue="On"><option>On</option><option>Off</option></select></label></article><article className="card panel-pad" style={{ marginTop: 12 }}><div className="row-between"><h3>Transactions</h3><button className="btn btn-outline" type="button">Download CSV</button></div><table className="table"><thead><tr><th>Date</th><th>Provider</th><th>Reference</th><th>Amount</th><th>Status</th></tr></thead><tbody>{transactions.map(t=><tr key={t.reference}><td>{t.date}</td><td>{t.provider}</td><td>{t.reference}</td><td>{ngn(t.amount)}</td><td>{t.status}</td></tr>)}</tbody></table></article></section>;
+}

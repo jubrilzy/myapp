@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { EmptyState } from '@/components/ui/states';
 
 const products = [
   { id: '101', image: '👕', name: 'Urban Tee', price: '$35.00', stock: 44, status: 'Active' },
@@ -17,6 +18,14 @@ export default function DashboardProductsPage() {
         <Link href="/dashboard/products/new" className="btn btn-primary">Add Product</Link>
       </div>
 
+
+      <div className="row-between" style={{ marginTop: 12 }}>
+        <input placeholder="Search products" className="filter-input" />
+        <div style={{ display: 'flex', gap: 8 }}><select className="btn btn-outline"><option>Status: All</option><option>Active</option><option>Draft</option></select><select className="btn btn-outline"><option>Stock: All</option><option>In Stock</option><option>Low Stock</option></select></div>
+      </div>
+      {products.length === 0 ? (
+        <EmptyState title="No products yet" description="Data will appear here once activity starts." />
+      ) : (
       <section className="card panel-pad">
         <div className="table-wrap">
           <table className="table">
@@ -47,6 +56,7 @@ export default function DashboardProductsPage() {
           </table>
         </div>
       </section>
+      )}
     </section>
   );
 }

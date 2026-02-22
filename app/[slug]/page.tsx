@@ -1,5 +1,7 @@
-import StoreTemplate from '@/components/store-template';
+import BoldTemplate from '@/components/templates/BoldTemplate';
+import MinimalTemplate from '@/components/templates/MinimalTemplate';
+import { store } from '@/lib/mock-data';
 
-export default function StorePage({ params }: { params: { slug: string } }) {
-  return <StoreTemplate slug={params.slug} />;
+export default function StorefrontPage() {
+  return store.template_name === 'bold' ? <BoldTemplate /> : <MinimalTemplate />;
 }
