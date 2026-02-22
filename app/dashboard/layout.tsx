@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 
 const items = [
@@ -12,31 +15,38 @@ const items = [
 ];
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === '/dashboard') return pathname === '/dashboard';
+    return pathname.startsWith(href);
+  };
+
   return (
-    <div className="dashboard">
-      <aside className="sidebar">
+    <div className="dashboard-shell">
+      <aside className="dashboard-sidebar">
         <h3 style={{ marginTop: 0 }}>Store Admin</h3>
         <nav>
           {items.map((item) => (
-            <Link key={item.label} href={item.href} className="side-link">
+            <Link key={item.label} href={item.href} className={`side-link ${isActive(item.href) ? 'active' : ''}`}>
               {item.label}
             </Link>
           ))}
         </nav>
       </aside>
 
-      <div>
-        <header className="topbar">
+      <div className="dashboard-content-wrap">
+        <header className="dashboard-topbar">
           <div>
             <p className="muted" style={{ margin: 0 }}>Store Admin</p>
             <h2 style={{ margin: 0 }}>Nova Style</h2>
           </div>
           <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
             <span className="badge">Basic Plan</span>
-            <button className="btn btn-outline" type="button">Profile ▾</button>
+            <Link className="btn btn-outline" href="/dashboard/settings">Profile ▾</Link>
           </div>
         </header>
-        <main className="main">{children}</main>
+        <main className="dashboard-main">{children}</main>
       </div>
     </div>
   );

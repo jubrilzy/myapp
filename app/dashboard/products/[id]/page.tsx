@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function EditProductPage({ params }: { params: { id: string } }) {
   return (
     <section>
@@ -40,7 +42,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
             <option>Draft</option>
           </select>
         </label>
-        <button className="btn btn-primary" type="button">Update Product</button>
+        <Link className="btn btn-primary" href="/dashboard/products">Update Product</Link>
       </form>
     </section>
   );

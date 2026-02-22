@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function DashboardSubscriptionPage() {
   return (
     <section>
@@ -9,8 +11,8 @@ export default function DashboardSubscriptionPage() {
         <p><strong>Renewal Date:</strong> 2026-03-20</p>
         <p><strong>Billing Status:</strong> Active</p>
         <div style={{ display: 'flex', gap: 12, marginTop: 12 }}>
-          <button className="btn btn-primary" type="button">Upgrade</button>
-          <button className="btn btn-outline" type="button">Cancel</button>
+          <Link className="btn btn-primary" href="/dashboard/subscription">Upgrade</Link>
+          <Link className="btn btn-outline" href="/dashboard/subscription">Cancel</Link>
         </div>
       </article>
     </section>

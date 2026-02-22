@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function NewProductPage() {
   return (
     <section>
@@ -40,7 +42,7 @@ export default function NewProductPage() {
             <option>Draft</option>
           </select>
         </label>
-        <button className="btn btn-primary" type="button">Save Product</button>
+        <Link className="btn btn-primary" href="/dashboard/products">Save Product</Link>
       </form>
     </section>
   );

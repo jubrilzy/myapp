@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function OrderDetailsPage({ params }: { params: { id: string } }) {
   return (
     <section>
@@ -32,9 +34,9 @@ export default function OrderDetailsPage({ params }: { params: { id: string } })
         <p>12 Marina Street, Lagos, Nigeria.</p>
       </article>
 
-      <button className="btn btn-primary" type="button" style={{ marginTop: 16 }}>
+      <Link className="btn btn-primary" href="/dashboard/orders" style={{ marginTop: 16 }}>
         Mark as Fulfilled
-      </button>
+      </Link>
     </section>
   );
 }

@@ -39,7 +39,7 @@ export default function DashboardProductsPage() {
                   <td>{product.stock}</td>
                   <td>{product.status}</td>
                   <td>
-                    <Link href={`/dashboard/products/${product.id}`}>Edit</Link> / <button className="link-btn" type="button">Delete</button>
+                    <Link href={`/dashboard/products/${product.id}`}>Edit</Link> / <Link className="link-btn" href="/dashboard/products">Delete</Link>
                   </td>
                 </tr>
               ))}

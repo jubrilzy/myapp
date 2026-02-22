@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function DashboardSettingsPage() {
   return (
     <section>
@@ -18,7 +20,7 @@ export default function DashboardSettingsPage() {
 
         <h3>Store Status</h3>
         <label className="field">Activate / Deactivate store<select defaultValue="Active"><option>Active</option><option>Locked</option></select></label>
-        <button className="btn btn-primary" type="button">Save Settings</button>
+        <Link className="btn btn-primary" href="/dashboard">Save Settings</Link>
       </form>
     </section>
   );
