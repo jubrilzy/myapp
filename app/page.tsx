@@ -20,6 +20,14 @@ export default function LandingPage() {
     localStorage.setItem('biz-theme', theme);
   }, [theme]);
 
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
   useEffect(() => {
     const revealObs = new IntersectionObserver(
       (entries) => {
@@ -54,7 +62,7 @@ export default function LandingPage() {
   return (
     <>
       <nav id="mainNav">
-        <a href="#" className="nav-logo">
+        <a href="#" className="nav-logo" onClick={() => setOpen(false)}>
           <div className="nav-logo-icon">🛍️</div>
           Biz<em>shop</em>
         </a>
@@ -80,7 +88,7 @@ export default function LandingPage() {
           <a href="/login" className="btn btn-ghost">Log in</a>
           <a href="/register" className="btn btn-primary">Start Free Trial</a>
         </div>
-        <button className="hamburger" aria-label="Open menu" onClick={() => setOpen((v) => !v)}>
+        <button className="hamburger" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen((v) => !v)}>
           <span style={open ? { transform: 'rotate(45deg) translate(5px,5px)' } : undefined} />
           <span style={open ? { opacity: 0 } : undefined} />
           <span style={open ? { transform: 'rotate(-45deg) translate(5px,-5px)' } : undefined} />
