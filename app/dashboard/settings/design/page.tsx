@@ -1,0 +1,3 @@
+export default function DesignPage() {
+  return <div><h1 className="page-title">Design Settings</h1><div className="two-col"><div className="card"><h3>Branding</h3><input className="fi" placeholder="Logo upload" /><input className="fi" placeholder="Primary colour" /><select className="fs"><option>DM Sans</option><option>Syne</option></select></div><div className="card"><h3>Homepage</h3><input className="fi" placeholder="Hero image" /><input className="fi" placeholder="Headline" /><textarea rows={3} placeholder="Subtext" /><input className="fi" placeholder="CTA label" /><button className="btn btn-primary">Preview store</button></div></div></div>;
+}
