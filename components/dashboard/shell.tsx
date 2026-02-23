@@ -4,7 +4,18 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 
-const nav = [
+type NavItem = {
+  href: string;
+  label: string;
+  badge?: string;
+};
+
+type NavGroup = {
+  group: string;
+  items: NavItem[];
+};
+
+const nav: NavGroup[] = [
   { group: 'Dashboard', items: [
     { href: '/dashboard', label: 'Overview' },
     { href: '/dashboard/orders', label: 'Orders' },
@@ -24,7 +35,7 @@ const nav = [
     { href: '/dashboard/subscription', label: 'Subscription' },
     { href: '/dashboard/support', label: 'Support' },
   ]}
-] as const;
+];
 
 const mobileNav = [
   { href: '/dashboard', label: 'Home' },
