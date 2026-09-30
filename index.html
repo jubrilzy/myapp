@@ -61,45 +61,79 @@
     .card p { color: var(--muted); }
 
     /* Sticky scroll showcase */
-    .showcase { background: #0f1020; color: #fff; }
-    .showcase .section-sub { color: #a9adc7; }
+    @property --accent  { syntax: '<color>'; inherits: true; initial-value: #6366f1; }
+    @property --accent2 { syntax: '<color>'; inherits: true; initial-value: #a855f7; }
+
+    .showcase {
+      --accent: #6366f1; --accent2: #a855f7;
+      transition: --accent .9s ease, --accent2 .9s ease;
+      position: relative; color: #fff; background-color: #0b0c1a;
+      background-image:
+        radial-gradient(1200px 600px at 50% -10%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
+        radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: auto, 28px 28px;
+    }
     .showcase, .showcase * { font-family: "Manrope", system-ui, sans-serif; }
-    .showcase-head { text-align: center; flex: none; }
-    .showcase .section-title { font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1.1; margin-bottom: 6px; font-weight: 800; letter-spacing: -.02em; }
-    .showcase .section-sub { font-size: 1.05rem; margin-bottom: 0; }
     .showcase .container { max-width: 1440px; padding: 0 32px; }
+
+    .showcase-head { text-align: center; flex: none; }
+    .showcase-head .eyebrow { display: inline-block; padding: 6px 14px; border-radius: 999px; font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: color-mix(in srgb, var(--accent) 25%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 60%, transparent); margin-bottom: 12px; }
+    .showcase .section-title { font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1.1; margin-bottom: 0; font-weight: 800; letter-spacing: -.02em; }
+    .showcase .section-title span { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
     .sticky-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(420px, 700px) minmax(0, 1fr); gap: 64px; }
     .col { display: flex; flex-direction: column; }
-    .col-right { padding-top: 60vh; }           /* offsets right steps so text alternates left / right */
-    .step { min-height: 120vh; display: flex; flex-direction: column; justify-content: center; opacity: .18; filter: blur(2px); transform: translateY(40px); transition: opacity .7s ease, transform .7s ease, filter .7s ease; }
-    .step.active { opacity: 1; filter: none; transform: none; }
-    .step .num { color: #8b86ff; font-weight: 800; letter-spacing: .18em; font-size: 1rem; margin-bottom: 16px; }
-    .step h3 { font-size: clamp(2.2rem, 3.6vw, 3.6rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 20px; }
-    .step p { color: #b6bad3; font-size: clamp(1.15rem, 1.5vw, 1.4rem); line-height: 1.65; font-weight: 500; }
-    .col-left .step { text-align: right; align-items: flex-end; }
+    .col-right { padding-top: 45vh; }            /* offsets right steps so text alternates left / right */
 
+    /* steps */
+    .step { --from: 70px; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; opacity: .14; filter: blur(3px); transform: translateX(var(--from)) scale(.95); transition: opacity .8s ease, transform .9s cubic-bezier(.2,.8,.2,1), filter .8s ease; }
+    .col-left  .step { --from: -70px; text-align: right; align-items: flex-end; }
+    .col-right .step { --from: 70px; }
+    .step.active { opacity: 1; filter: none; transform: none; }
+
+    .step > * { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
+    .step.active > * { opacity: 1; transform: none; }
+    .step.active > :nth-child(1) { transition-delay: .05s; }
+    .step.active > :nth-child(2) { transition-delay: .12s; }
+    .step.active > :nth-child(3) { transition-delay: .19s; }
+    .step.active > :nth-child(4) { transition-delay: .26s; }
+    .step.active > :nth-child(5) { transition-delay: .33s; }
+
+    .step .icon { width: 64px; height: 64px; border-radius: 20px; display: grid; place-items: center; font-size: 1.9rem; margin-bottom: 20px; background: linear-gradient(135deg, var(--accent), var(--accent2)); box-shadow: 0 12px 34px color-mix(in srgb, var(--accent) 55%, transparent); }
+    .step .num { color: color-mix(in srgb, var(--accent) 65%, #fff); font-weight: 800; letter-spacing: .2em; font-size: .95rem; margin-bottom: 12px; }
+    .step h3 { font-size: clamp(2.2rem, 3.6vw, 3.6rem); font-weight: 800; line-height: 1.08; letter-spacing: -.025em; margin-bottom: 20px; }
+    .step p { color: #b6bad3; font-size: clamp(1.15rem, 1.5vw, 1.4rem); line-height: 1.65; font-weight: 500; max-width: 34ch; }
+    .step .bar { display: block; height: 4px; width: 0; border-radius: 4px; margin: 24px 0 20px; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width 1s cubic-bezier(.2,.8,.2,1) .3s; }
+    .step.active .bar { width: 96px; }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .col-left .pills { justify-content: flex-end; }
+    .pills li { list-style: none; padding: 7px 14px; border-radius: 999px; font-size: .9rem; font-weight: 600; color: #e6e8f5; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); }
+
+    /* sticky image */
     .col-mid { position: relative; }
     .sticky-media { position: sticky; top: 64px; height: calc(100vh - 64px); padding-top: 24px; display: flex; flex-direction: column; gap: 16px; align-items: center; justify-content: flex-end; }
     .frame { position: relative; width: 100%; flex: 1; min-height: 0; display: flex; align-items: flex-end; justify-content: center; }
-    .frame img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; object-position: bottom center; filter: drop-shadow(0 30px 60px rgba(0,0,0,.5)); }
-    .slide { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 9rem; opacity: 0; transform: scale(1.05); transition: opacity .6s, transform .6s; }
-    .slide.active { opacity: 1; transform: none; }
-    .slide img { width: 100%; height: 100%; object-fit: cover; }   /* use <img> here for real photos */
-    .slide:nth-child(1) { background: linear-gradient(135deg, #6366f1, #a855f7); }
-    .slide:nth-child(2) { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
-    .slide:nth-child(3) { background: linear-gradient(135deg, #f59e0b, #ef4444); }
-    .slide:nth-child(4) { background: linear-gradient(135deg, #10b981, #14b8a6); }
+    .glow { position: absolute; left: 50%; bottom: 0; width: 120%; aspect-ratio: 1; transform: translate(-50%, 35%); border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 55%, transparent) 0%, color-mix(in srgb, var(--accent2) 25%, transparent) 40%, transparent 68%); filter: blur(30px); pointer-events: none; animation: pulse 6s ease-in-out infinite; }
+    .frame img { position: relative; display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; object-position: bottom center; transform-origin: bottom center; transform: rotate(var(--tilt, 0deg)) scale(var(--zoom, 1)); transition: transform 1s cubic-bezier(.2,.8,.2,1); filter: drop-shadow(0 30px 60px rgba(0,0,0,.55)); animation: breathe 7s ease-in-out infinite; }
+    @keyframes breathe { 0%,100% { scale: 1; } 50% { scale: 1.025; } }
+    @keyframes pulse   { 0%,100% { opacity: .75; } 50% { opacity: 1; } }
 
     @media (max-width: 860px) {
       .sticky-wrap { grid-template-columns: 1fr; gap: 0; }
       .col-mid { order: -1; }
-      .sticky-media { height: 50vh; top: 64px; z-index: 2; background: #0f1020; gap: 8px; padding-top: 12px; }
+      .sticky-media { height: 50vh; top: 64px; z-index: 2; background: #0b0c1a; gap: 8px; padding-top: 12px; }
       .showcase .section-title { font-size: 1.6rem; }
-      .showcase .section-sub { display: none; }
-      .frame { height: 100%; width: 100%; border-radius: 20px; }
+      .showcase-head .eyebrow { display: none; }
+      .frame { height: 100%; width: 100%; }
       .col-right { padding-top: 0; }
-      .col-left .step { text-align: left; align-items: flex-start; }
-      .step { min-height: 70vh; }
+      .step, .col-left .step, .col-right .step { --from: 0px; text-align: left; align-items: flex-start; min-height: 70vh; transform: translateY(30px) scale(.97); }
+      .step.active { transform: none; }
+      .col-left .pills { justify-content: flex-start; }
+      .step h3 { font-size: 2rem; }
+      .step p { font-size: 1.1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .showcase *, .showcase { transition: none !important; animation: none !important; }
     }
 
     /* Pricing */
@@ -167,25 +201,70 @@
       <div class="container">
         <div class="sticky-wrap">
           <div class="col col-left">
-            <div class="step" data-step="0"><div class="num">STEP 01</div><h3>Create your space</h3><p>Set up a workspace in seconds and invite your team with a single link.</p></div>
-            <div class="step" data-step="2"><div class="num">STEP 03</div><h3>Track progress</h3><p>See what's done, what's blocked, and what's next, all on one dashboard.</p></div>
+            <div class="step" data-step="0">
+              <div class="icon">🚀</div>
+              <div class="num">STEP 01</div>
+              <h3>Create your space</h3>
+              <p>Set up a workspace in seconds and invite your team with a single link.</p>
+              <span class="bar"></span>
+              <ul class="pills"><li>2-minute setup</li><li>No credit card</li></ul>
+            </div>
+            <div class="step" data-step="2">
+              <div class="icon">👥</div>
+              <div class="num">STEP 03</div>
+              <h3>Invite your team</h3>
+              <p>Bring everyone in with one link. Roles and permissions are ready from day one.</p>
+              <span class="bar"></span>
+              <ul class="pills"><li>Roles &amp; access</li><li>Real-time comments</li></ul>
+            </div>
+            <div class="step" data-step="4">
+              <div class="icon">📊</div>
+              <div class="num">STEP 05</div>
+              <h3>Track progress</h3>
+              <p>See what's done, what's blocked, and what's next, all on one dashboard.</p>
+              <span class="bar"></span>
+              <ul class="pills"><li>Live dashboards</li><li>Weekly reports</li></ul>
+            </div>
           </div>
 
           <div class="col col-mid">
             <div class="sticky-media">
               <div class="showcase-head">
-                <h2 class="section-title">How it works</h2>
-                <p class="section-sub">Scroll to explore each step.</p>
+                <span class="eyebrow">How it works</span>
+                <h2 class="section-title">From idea to <span>done</span></h2>
               </div>
               <div class="frame">
+                <div class="glow"></div>
                 <img src="https://thenexiesolutions.com/wp-content/uploads/2026/09/nexie.png" alt="Nexie">
               </div>
             </div>
           </div>
 
           <div class="col col-right">
-            <div class="step" data-step="1"><div class="num">STEP 02</div><h3>Add your tools</h3><p>Connect the apps you already use. No migration, no fuss.</p></div>
-            <div class="step" data-step="3"><div class="num">STEP 04</div><h3>Ship &amp; celebrate</h3><p>Deliver on time and share wins with everyone involved.</p></div>
+            <div class="step" data-step="1">
+              <div class="icon">🧩</div>
+              <div class="num">STEP 02</div>
+              <h3>Add your tools</h3>
+              <p>Connect the apps you already use. No migration, no fuss.</p>
+              <span class="bar"></span>
+              <ul class="pills"><li>100+ integrations</li><li>One-click connect</li></ul>
+            </div>
+            <div class="step" data-step="3">
+              <div class="icon">⚡</div>
+              <div class="num">STEP 04</div>
+              <h3>Automate the busywork</h3>
+              <p>Turn repetitive tasks into simple rules that run on their own while you focus.</p>
+              <span class="bar"></span>
+              <ul class="pills"><li>Smart rules</li><li>Saves hours weekly</li></ul>
+            </div>
+            <div class="step" data-step="5">
+              <div class="icon">🎉</div>
+              <div class="num">STEP 06</div>
+              <h3>Ship &amp; celebrate</h3>
+              <p>Deliver on time and share the wins with everyone involved.</p>
+              <span class="bar"></span>
+              <ul class="pills"><li>On-time delivery</li><li>Share results</li></ul>
+            </div>
           </div>
         </div>
       </div>
@@ -237,11 +316,18 @@
   </footer>
 
   <script>
-    // Sticky-scroll showcase: highlight the step nearest the viewport centre and swap the middle image.
+    // Sticky-scroll showcase: activate the step nearest the viewport centre, retint the section and tilt the image.
     (function () {
       var steps = document.querySelectorAll('.step');
-      var slides = document.querySelectorAll('.slide');
-      if (!steps.length) return;
+      var section = document.getElementById('how');
+      var img = document.querySelector('.frame img');
+      if (!steps.length || !section) return;
+
+      var palette = [
+        ['#6366f1', '#a855f7'], ['#06b6d4', '#3b82f6'], ['#ec4899', '#f97316'],
+        ['#f59e0b', '#ef4444'], ['#10b981', '#14b8a6'], ['#8b5cf6', '#ec4899']
+      ];
+      var current = -1;
 
       function update() {
         var mid = window.innerHeight / 2, best = null, bestDist = Infinity;
@@ -250,9 +336,17 @@
           var d = Math.abs(r.top + r.height / 2 - mid);
           if (d < bestDist) { bestDist = d; best = s; }
         });
-        steps.forEach(function (s) { s.classList.toggle('active', s === best); });
         var idx = +best.dataset.step;
-        slides.forEach(function (sl, i) { sl.classList.toggle('active', i === idx); });
+        steps.forEach(function (s) { s.classList.toggle('active', s === best); });
+        if (idx === current) return;
+        current = idx;
+        var c = palette[idx % palette.length];
+        section.style.setProperty('--accent', c[0]);
+        section.style.setProperty('--accent2', c[1]);
+        if (img) {
+          img.style.setProperty('--tilt', (idx % 2 === 0 ? -2.5 : 2.5) + 'deg');   // lean toward the active side
+          img.style.setProperty('--zoom', 1 + (idx % 3) * 0.015);
+        }
       }
 
       var ticking = false;
